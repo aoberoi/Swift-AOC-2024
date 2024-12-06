@@ -1,0 +1,6 @@
+{
+  "swift.path": "/usr/bin",
+  "swift.swiftEnvironmentVariables": {
+    "DEVELOPER_DIR": "public"
+  }
+}

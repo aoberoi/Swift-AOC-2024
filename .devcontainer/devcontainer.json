@@ -1,0 +1,53 @@
+{
+    "name": "Swift",
+    "image": "swift:6.0",
+    "features": {
+        // Installs a lot of packages (possibly git too), and sets a custom non-root user
+        //
+        // I'm not sure this is necessary. Seems like most of the logic is to handle variations between Linux distros
+        // and to get Oh My Zsh set up correctly.
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": "false",
+            "username": "vscode",
+            "upgradePackages": "false"
+        },
+        // Installs git
+        //
+        // This might be redundant with above. Could file an issue about this here: https://github.com/swift-server/swift-devcontainer-template
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "os-provided",
+            "ppa": "false"
+        }
+    },
+    "runArgs": [
+        // Finch compatibility: This sets a name that is most likely under the 76 character limit
+        "--name", "${localWorkspaceFolderBasename}",
+        // Swift REPL compatibility
+        "--cap-add=SYS_PTRACE",
+
+        // Basically turns off all security isolation features. For example, allows the container to make system calls
+        // This seems like a really blunt instrument and kind of dangerous. No good reason found. Could propose removal
+        // in the template repo.
+        "--security-opt",
+        "seccomp=unconfined"
+    ],
+    // Configure tool-specific properties.
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            // Set *default* container specific settings.json values on container create.
+            "settings": {
+                "lldb.library": "/usr/lib/liblldb.so"
+            },
+            // Add the IDs of extensions you want installed when the container is created.
+            "extensions": [
+                "sswg.swift-lang"
+            ]
+        }
+    },
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    // Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+    "remoteUser": "vscode"
+}

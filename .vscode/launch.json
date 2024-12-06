@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:Swift-AOC-2024}",
+      "name": "Debug CLI",
+      "program": "${workspaceFolder:Swift-AOC-2024}/.build/debug/CLI",
+      "preLaunchTask": "swift: Build Debug CLI"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:Swift-AOC-2024}",
+      "name": "Release CLI",
+      "program": "${workspaceFolder:Swift-AOC-2024}/.build/release/CLI",
+      "preLaunchTask": "swift: Build Release CLI"
+    }
+  ]
+}
