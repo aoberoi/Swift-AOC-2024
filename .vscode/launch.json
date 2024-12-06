@@ -5,18 +5,18 @@
       "request": "launch",
       "args": [],
       "cwd": "${workspaceFolder:Swift-AOC-2024}",
-      "name": "Debug CLI",
-      "program": "${workspaceFolder:Swift-AOC-2024}/.build/debug/CLI",
-      "preLaunchTask": "swift: Build Debug CLI"
+      "name": "Debug aoc2024",
+      "program": "${workspaceFolder:Swift-AOC-2024}/.build/debug/aoc2024",
+      "preLaunchTask": "swift: Build Debug aoc2024"
     },
     {
       "type": "lldb",
       "request": "launch",
       "args": [],
       "cwd": "${workspaceFolder:Swift-AOC-2024}",
-      "name": "Release CLI",
-      "program": "${workspaceFolder:Swift-AOC-2024}/.build/release/CLI",
-      "preLaunchTask": "swift: Build Release CLI"
+      "name": "Release aoc2024",
+      "program": "${workspaceFolder:Swift-AOC-2024}/.build/release/aoc2024",
+      "preLaunchTask": "swift: Build Release aoc2024"
     }
   ]
 }
