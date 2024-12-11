@@ -2,6 +2,9 @@ import ArgumentParser
 
 struct Day01: ParsableCommand {
 
+    // @MainActor
+    // static var print: (Any..., _ separator: String, _ terminator: String) -> Void = Swift.print
+
     @Argument var inputFile: String
 
     // Historian Hysteria
@@ -13,7 +16,26 @@ struct Day01: ParsableCommand {
     // positive.
     // The total distance, which is the sum of the individual pair distances, is output as the result.
     func run() throws {
-        // TODO: Read the inputFile
-        print("Executing Day01")
+        // TODO: open inputFile for reading
+
+        // Initialize two lists
+        var leftList: [Int] = []
+        var rightList: [Int] = []
+
+        // TODO: As I read the input, append the locations into each list.
+
+        leftList.sort()
+        rightList.sort()
+
+        assert(leftList.count == rightList.count)
+
+        var totalDistance = 0
+        for (leftLocationID, rightLocationID) in zip(leftList, rightList) {
+            totalDistance += abs(leftLocationID - rightLocationID)
+        }
+
+        print(totalDistance)
     }
+
+
 }
