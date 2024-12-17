@@ -1,11 +1,18 @@
+import Foundation
 import ArgumentParser
 
 struct Day01: ParsableCommand {
 
-    // @MainActor
-    // static var print: (Any..., _ separator: String, _ terminator: String) -> Void = Swift.print
-
     @Argument var inputFile: String
+
+    enum CodingKeys: String, CodingKey {
+        case inputFile
+    }
+
+    // TODO: It's not ideal that this is publicly mutable. Any way to only allow test code to mutate? Is that what
+    // @testable does? Another approach is to use an init(), but then we don't get to exercise the parsing code in our
+    // tests.
+    var printer: Printing = StandardOutPrinter()
 
     // Historian Hysteria
     //
@@ -34,7 +41,7 @@ struct Day01: ParsableCommand {
             totalDistance += abs(leftLocationID - rightLocationID)
         }
 
-        print(totalDistance)
+        printer.print(totalDistance)
     }
 
 
