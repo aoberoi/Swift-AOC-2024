@@ -4,15 +4,11 @@ import ArgumentParser
 
 @Test func executesCommand() throws {
     var command = try Day01.parse(["someFilename"])
-    let printer = StringPrinter()
-    command.printer = printer
+    command.printer = StringPrinter()
 
     try command.run()
 
-    let printedItems = printer.printedItems
-    // let stringPrinter = try #require(command.printer as? StringPrinter)
-    // let printedItems = stringPrinter.printedItems
+    let stringPrinter = try #require(command.printer as? StringPrinter)
+    let printedItems = stringPrinter.printedItems
     #expect(printedItems.count == 1)
-
-    print(printer.printedItems)
 }

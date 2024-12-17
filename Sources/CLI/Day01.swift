@@ -22,7 +22,7 @@ struct Day01: ParsableCommand {
     // For each pair, we must compute a distance, which is the difference in those integers. Distances are always
     // positive.
     // The total distance, which is the sum of the individual pair distances, is output as the result.
-    func run() throws {
+    mutating func run() throws {
         // TODO: open inputFile for reading
 
         // Initialize two lists
