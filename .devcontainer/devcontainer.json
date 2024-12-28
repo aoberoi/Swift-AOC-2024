@@ -20,8 +20,6 @@
         }
     },
     "runArgs": [
-        // Finch compatibility: This sets a name that is most likely under the 76 character limit
-        "--name", "${localWorkspaceFolderBasename}",
         // Swift REPL compatibility
         "--cap-add=SYS_PTRACE",
 
