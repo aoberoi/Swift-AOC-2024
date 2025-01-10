@@ -1,6 +1,7 @@
 import Foundation
 import ArgumentParser
 
+// TODO: Extract into a file outside any particular Day subcommand
 enum ExercisePart: String, EnumerableFlag {
     case partOne
     case partTwo
@@ -33,7 +34,7 @@ struct Day01: AsyncParsableCommand {
     mutating func run() async throws {
 
         guard let fileContents = try? fileReader.contentsOfFile(inputFile) else {
-            print("Could not open input file: \(inputFile)")
+            printer.print("Could not open input file: \(inputFile)")
             return
         }
 

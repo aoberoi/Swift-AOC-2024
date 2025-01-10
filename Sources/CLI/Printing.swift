@@ -30,3 +30,8 @@ struct StringPrinter: Printing {
         printedItems.removeAll()
     }
 }
+
+// Helps enforce the use of a Printing type by turning all bare calls to the global print() into compiler errors
+@available(*, unavailable, message: "print() is disallowed in this program. Use a type that conforms to Printing")
+public func print(_ items: Any..., separator: String = " ", terminator: String = "\n") {
+}
