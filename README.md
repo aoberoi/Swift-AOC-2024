@@ -29,6 +29,12 @@ named `input.txt`:
 $ aoc2024 day01 input.txt
 ```
 
+And in order to solve part two of the Day 1 problem, instead you would run:
+
+```shell
+$ aoc2024 day01 --part-two input.txt
+```
+
 The CLI will print help text if the command is invalid.
 
 ## Development
