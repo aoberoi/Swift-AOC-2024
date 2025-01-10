@@ -17,9 +17,10 @@ This year, I'm taking the opportunity to practice and learn a things in particul
 
 ## Usage
 
-The project is a command line utility, divided into subcommands for each daily problem. Each command
-expects a path to the file with the input, and responds with the solution. Note: each user must
-[log in](https://adventofcode.com/2024/auth/login) to obtain a personalized input for each problem.
+The project is a command line utility, divided into subcommands for each daily exercise. Each
+command expects a path to the file with the input, and responds with the solution. Note: each user
+must [log in](https://adventofcode.com/2024/auth/login) to obtain a personalized input for each
+problem.
 
 An example of running the CLI to solve the Day 1 problem, where the input was saved into a file
 named `input.txt`:

@@ -13,6 +13,7 @@ struct Day01: AsyncParsableCommand {
     // @testable does? Another approach is to use an init(), but then we don't get to exercise the parsing code in our
     // tests.
     var printer: Printing = StandardOutPrinter()
+    var fileReader: FileReading = FileSystemReader()
 
     // Historian Hysteria
     //
@@ -23,19 +24,38 @@ struct Day01: AsyncParsableCommand {
     // positive.
     // The total distance, which is the sum of the individual pair distances, is output as the result.
     mutating func run() async throws {
-        // TODO: open inputFile for reading
+
+        guard let fileContents = try? fileReader.contentsOfFile(inputFile) else {
+            print("Could not open input file: \(inputFile)")
+            return
+        }
 
         // Initialize two lists
         var leftList: [Int] = []
         var rightList: [Int] = []
 
-        // TODO: As I read the input, append the locations into each list.
+        // As I read the input, append the locations into each list.
+        for line in fileContents.lines {
+            // skip blank lines
+            guard !line.isEmpty else { continue }
 
+            // each line contains two locations, separated by a space
+            let locations = line.split(separator: " ")
+            if let leftLocation = Int(locations[0]) {
+                leftList.append(leftLocation)
+            }
+            if let rightLocation = Int(locations[1]) {
+                rightList.append(rightLocation)
+            }
+        }
+
+        // Sort each list in order to pair up locations in order
         leftList.sort()
         rightList.sort()
 
         assert(leftList.count == rightList.count)
 
+        // Compute distance, and sum up for whole list
         var totalDistance = 0
         for (leftLocationID, rightLocationID) in zip(leftList, rightList) {
             totalDistance += abs(leftLocationID - rightLocationID)
