@@ -1,4 +1,6 @@
 protocol Printing {
+    // NOTE: The following requirement uses mutating to signal that conforming types are _allowed_ to use a mutating
+    // func, not that they are required to use a mutating func.
     mutating func print(_ items: Any..., separator: String, terminator: String)
 }
 

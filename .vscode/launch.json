@@ -12,7 +12,7 @@
     {
       "type": "lldb",
       "request": "launch",
-      "args": ["day01", "TODO.txt"],
+      "args": ["day01", "samples/day01.txt"],
       "cwd": "${workspaceFolder:Swift-AOC-2024}",
       "name": "Debug aoc2024 Day01",
       "program": "${workspaceFolder:Swift-AOC-2024}/.build/debug/aoc2024",
