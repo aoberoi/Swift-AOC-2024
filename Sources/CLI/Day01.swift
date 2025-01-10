@@ -1,12 +1,19 @@
 import Foundation
 import ArgumentParser
 
+enum ExercisePart: String, EnumerableFlag {
+    case partOne
+    case partTwo
+}
+
 struct Day01: AsyncParsableCommand {
 
     @Argument var inputFile: String
+    @Flag var exercisePart: ExercisePart = .partOne
 
     enum CodingKeys: String, CodingKey {
         case inputFile
+        case exercisePart
     }
 
     // TODO: It's not ideal that this is publicly mutable. Any way to only allow test code to mutate? Is that what
@@ -31,8 +38,8 @@ struct Day01: AsyncParsableCommand {
         }
 
         // Initialize two lists
-        var leftList: [Int] = []
-        var rightList: [Int] = []
+        var left: [Int] = []
+        var right: [Int] = []
 
         // As I read the input, append the locations into each list.
         for line in fileContents.lines {
@@ -40,24 +47,35 @@ struct Day01: AsyncParsableCommand {
             guard !line.isEmpty else { continue }
 
             // each line contains two locations, separated by a space
-            let locations = line.split(separator: " ")
-            if let leftLocation = Int(locations[0]) {
-                leftList.append(leftLocation)
+            let elements = line.split(separator: " ")
+            if let leftElement = Int(elements[0]) {
+                left.append(leftElement)
             }
-            if let rightLocation = Int(locations[1]) {
-                rightList.append(rightLocation)
+            if let rightElement = Int(elements[1]) {
+                right.append(rightElement)
             }
         }
 
-        // Sort each list in order to pair up locations in order
-        leftList.sort()
-        rightList.sort()
+        switch exercisePart {
+            case .partOne:
+                printTotalDistance(left: left, right: right)
+            case .partTwo:
+                // printSimilarityScore(left: left, right: right)
+                printer.print("Not yet implemented")
+        }
 
-        assert(leftList.count == rightList.count)
+    }
+
+    mutating func printTotalDistance(left: consuming [Int], right: consuming [Int]) {
+        // Sort each list in order to pair up locations in order
+        left.sort()
+        right.sort()
+
+        assert(left.count == right.count)
 
         // Compute distance, and sum up for whole list
         var totalDistance = 0
-        for (leftLocationID, rightLocationID) in zip(leftList, rightList) {
+        for (leftLocationID, rightLocationID) in zip(left, right) {
             totalDistance += abs(leftLocationID - rightLocationID)
         }
 

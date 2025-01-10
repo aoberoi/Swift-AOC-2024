@@ -12,9 +12,9 @@
     {
       "type": "lldb",
       "request": "launch",
-      "args": ["day01", "samples/day01.txt"],
+      "args": ["day01", "--part-two", "samples/day01.txt"],
       "cwd": "${workspaceFolder:Swift-AOC-2024}",
-      "name": "Debug aoc2024 Day01",
+      "name": "Debug aoc2024 Day01 Part 2",
       "program": "${workspaceFolder:Swift-AOC-2024}/.build/debug/aoc2024",
       "preLaunchTask": "swift: Build Debug aoc2024"
     },
