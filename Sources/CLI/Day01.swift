@@ -17,9 +17,7 @@ struct Day01: AsyncParsableCommand {
         case exercisePart
     }
 
-    // TODO: It's not ideal that this is publicly mutable. Any way to only allow test code to mutate? Is that what
-    // @testable does? Another approach is to use an init(), but then we don't get to exercise the parsing code in our
-    // tests.
+    // Testing depends on injected dependencies overwriting these properties
     var printer: Printing = StandardOutPrinter()
     var fileReader: FileReading = FileSystemReader()
 
