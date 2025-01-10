@@ -61,8 +61,7 @@ struct Day01: AsyncParsableCommand {
             case .partOne:
                 printTotalDistance(left: left, right: right)
             case .partTwo:
-                // printSimilarityScore(left: left, right: right)
-                printer.print("Not yet implemented")
+                printSimilarityScore(left: left, right: right)
         }
 
     }
@@ -83,5 +82,16 @@ struct Day01: AsyncParsableCommand {
         printer.print(totalDistance)
     }
 
+    mutating func printSimilarityScore(left: consuming [Int], right: consuming [Int]) {
+        let frequencies = right.reduce(into: [:]) { freq, element in
+            freq[element, default: 0] += 1
+        }
 
+        var similarityScore = 0
+        for element in left {
+            similarityScore += (element * frequencies[element, default: 0])
+        }
+
+        printer.print(similarityScore)
+    }
 }

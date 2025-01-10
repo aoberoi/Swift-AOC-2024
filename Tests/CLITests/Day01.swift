@@ -2,6 +2,7 @@ import Testing
 import ArgumentParser
 @testable import CLI
 
+// TODO: factor out all the common parts of making the following tests work
 @Test func solvesPartOne() async throws {
     // Arrange
     let path = "sample.txt"
@@ -55,5 +56,5 @@ import ArgumentParser
     let stringPrinter = try #require(command.printer as? StringPrinter)
     let output = try #require(stringPrinter.printedItems.first)
     #expect(stringPrinter.printedItems.count == 1)
-    #expect(output.trimmingCharacters(in: .whitespacesAndNewlines) == "Not yet implemented")
+    #expect(output.trimmingCharacters(in: .whitespacesAndNewlines) == "\(31)")
 }
